@@ -42,7 +42,7 @@ def checkType():
 
     else: 
         label.config(text='')
-        messagebox.showerror('Wrong input', 'Card number must contain digits only')
+        messagebox.showwarning('Wrong input', 'Card number must contain digits only')
         
 
 
