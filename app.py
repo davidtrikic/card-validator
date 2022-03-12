@@ -13,8 +13,8 @@ app.resizable(False, False)
 app.title('Credit Card Validator')
 
 # Label
-label = Label(app, text='', font=('bold', 16), pady=20)
-label.grid(row=3, column=0)
+label = Label(app, text='------', font=('bold', 16))
+label.grid(row=1, column=0)
 # label_value = ''
 
 # Number entry
@@ -24,7 +24,7 @@ number_entry_value = StringVar()
 number_entry = Entry(app, textvariable=number_entry_value, width=40)
 number_entry.insert(0,'Enter card number...')
 number_entry.bind("<Button-1>", removePlaceholder)
-number_entry.grid(row=0, column=0)
+number_entry.grid(row=0, column=0, pady=10, padx=10)
 
 
 def checkType():
@@ -91,13 +91,15 @@ def validate(cardNumber, numOfDigits):
             cardType = 'Visa'
 
     if(doChecksum(cardNumber) and cardType != ''):
-        label.config(text=cardType)
+        label.config(text=cardType, fg='green')
+    else:   
+        label.config(text='Invalid Card Number', fg='red')
    
 
  
 #Buttons
 btn_validate = Button(app, text='Validate', width=20, command=checkType)
-btn_validate.grid(row=2, column=0)
+btn_validate.grid(row=2, column=0, pady=5)
 
 # Start program
 app.mainloop()
